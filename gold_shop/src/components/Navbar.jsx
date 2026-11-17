@@ -111,7 +111,7 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme }) {
               <ArrowUpRightIcon size={14} />
             </button>
 
-            {/* Dark/Light Mode Pill */}
+            {/* Dark/Light Mode Pill
             <button
               type="button"
               className="theme-toggle-pill"
@@ -130,7 +130,7 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme }) {
                   <span>LIGHT</span>
                 </>
               )}
-            </button>
+            </button> */}
 
             {/* Mobile Menu Hamburger */}
             <button
