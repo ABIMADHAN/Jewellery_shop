@@ -6,6 +6,7 @@ import paymentSvg from '../assets/small-pics/Payment Information-bro.svg'
 
 export default function HowItWorks({ onBookDemo }) {
   const [flippedStep, setFlippedStep] = useState(null)
+  const [hoveredStep, setHoveredStep] = useState(null)
 
   const steps = [
     {
@@ -88,19 +89,23 @@ export default function HowItWorks({ onBookDemo }) {
 
           <div className="steps-grid">
             {steps.map((st) => {
-              const isFlipped = flippedStep === st.id
+              const isFlipped = flippedStep === st.id || hoveredStep === st.id
               return (
                 <div
                   key={st.id}
                   className={`step-flip-container ${isFlipped ? 'is-flipped' : ''}`}
                   onClick={() => handleCardTap(st.id)}
-                  onMouseLeave={() => setFlippedStep(null)}
+                  onMouseEnter={() => setHoveredStep(st.id)}
+                  onMouseLeave={() => {
+                    setHoveredStep(null)
+                    setFlippedStep(null)
+                  }}
                   tabIndex={0}
                   role="button"
                   aria-label={`${st.title} - Click or tap to flip card`}
                 >
                   <div className="step-card-flipper">
-                    {/* FRONT SIDE (Existing card content with illustration replacing step-badge-wrap) */}
+                    {/* FRONT SIDE */}
                     <div className="step-card-face step-card-front">
                       {/* Step Illustration Box */}
                       <div className="step-image-wrap">
@@ -116,12 +121,16 @@ export default function HowItWorks({ onBookDemo }) {
                       <h3 className="step-title">{st.title}</h3>
                       <span className="step-subtitle">{st.subtitle}</span>
                       <p className="step-desc">{st.desc}</p>
-
-
                     </div>
 
-                    {/* BACK SIDE (Short description with centered "Book Now" button) */}
-                    <div className="step-card-face step-card-back">
+                    {/* BACK SIDE (Strictly hidden when not flipped to eliminate any text ghosting) */}
+                    <div
+                      className="step-card-face step-card-back"
+                      style={{
+                        visibility: isFlipped ? 'visible' : 'hidden',
+                        opacity: isFlipped ? 1 : 0
+                      }}
+                    >
                       <div className="step-back-badge">
                         <span className="step-back-num">STEP {st.num}</span>
                         <SparklesIcon size={13} />
