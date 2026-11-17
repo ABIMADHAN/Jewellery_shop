@@ -1,11 +1,10 @@
 import React from 'react'
-import {
-  SparklesIcon,
-  BellIcon,
-  TrendingUpIcon,
-  CreditCardIcon,
-  ArrowRightIcon
-} from './Icons'
+import { SparklesIcon, ArrowRightIcon } from './Icons'
+import completedGif from '../assets/features/Completed.gif'
+import crmGif from '../assets/features/Customer relationship management.gif'
+import eWalletGif from '../assets/features/E-Wallet.gif'
+import potOfGoldGif from '../assets/features/Pot of gold.gif'
+import pushNotificationsGif from '../assets/features/Push notifications.gif'
 
 export default function Features({ onBookDemo }) {
   // Outer Column (3 cards on far left orbit)
@@ -14,22 +13,19 @@ export default function Features({ onBookDemo }) {
       id: 1,
       title: 'Complete Chit & Scheme Management',
       desc: 'Set up gold and silver schemes, enrol customers, post instalments and manage accounts and maturity. Paid amount, balance and maturity date are tracked automatically.',
-      icon: <SparklesIcon size={18} />,
-      badge: 'CORE ENGINE'
+      image: completedGif
     },
     {
       id: 2,
       title: 'Digital Gold & Digital Silver',
       desc: 'Buy and sell at live rates with accounts, transactions and reports; keeps customers investing seamlessly between physical showroom purchases.',
-      icon: <TrendingUpIcon size={18} />,
-      badge: 'MICRO-SAVINGS'
+      image: potOfGoldGif
     },
     {
       id: 3,
       title: 'Integrated Payment',
       desc: 'UPI, card & net banking auto-reconciliation with zero discrepancies, instant receipts and instant ledger updates.',
-      icon: <CreditCardIcon size={18} />,
-      badge: 'SHOWROOM SUITE'
+      image: eWalletGif
     }
   ]
 
@@ -39,21 +35,34 @@ export default function Features({ onBookDemo }) {
       id: 4,
       title: 'Complete Chit & Scheme',
       desc: 'Set up schemes, enrol customers, track instalments, balance & automated maturities with precision.',
-      icon: <SparklesIcon size={18} />,
-      badge: 'CORE ENGINE'
+      image: crmGif
     },
     {
       id: 5,
       title: 'Automated Follow-Up & Reminders',
       desc: 'Intelligent WhatsApp, SMS & app notifications for upcoming instalments, balance dues, rate drops and maturity claims.',
-      icon: <BellIcon size={18} />,
-      badge: 'ZERO DEFAULTS'
+      image: pushNotificationsGif
     }
   ]
 
   return (
     <section id="features" className="section-padding split-features-section">
       <div className="section-container">
+        {/* Section Header */}
+        <div className="section-header text-center features-main-header">
+          <div className="section-badge">
+            <SparklesIcon size={14} />
+            <span>SOFTWARE CAPABILITIES</span>
+          </div>
+          <h2 className="section-title">
+            Everything You Need to Run a <br />
+            <span className="gold-text-gradient">High-Growth Jewellery Showroom</span>
+          </h2>
+          <p className="section-subtitle">
+            From automated chit schemes and digital gold investing to real-time counter reconciliation and multi-branch control — engineered specifically for modern Indian jewellers.
+          </p>
+        </div>
+
         <div className="split-features-layout orbital-features-layout">
           {/* Concentric Planetary Orbit Rings centered around the Right Hub */}
           <svg
@@ -77,9 +86,14 @@ export default function Features({ onBookDemo }) {
           <div className="orbital-cards-col outer-col">
             {outerFeatures.map((item) => (
               <div key={item.id} className="orbital-feature-card">
-                <div className="feature-card-header">
-                  <div className="feature-icon-square">{item.icon}</div>
-                  <span className="feature-micro-tag">{item.badge}</span>
+                {/* Feature GIF Media replacing feature-card-header */}
+                <div className="feature-card-media">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="feature-card-gif"
+                    loading="lazy"
+                  />
                 </div>
                 <h3 className="feature-item-title">{item.title}</h3>
                 <p className="feature-item-desc">{item.desc}</p>
@@ -91,9 +105,14 @@ export default function Features({ onBookDemo }) {
           <div className="orbital-cards-col inner-col">
             {innerFeatures.map((item) => (
               <div key={item.id} className="orbital-feature-card">
-                <div className="feature-card-header">
-                  <div className="feature-icon-square">{item.icon}</div>
-                  <span className="feature-micro-tag">{item.badge}</span>
+                {/* Feature GIF Media replacing feature-card-header */}
+                <div className="feature-card-media">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="feature-card-gif"
+                    loading="lazy"
+                  />
                 </div>
                 <h3 className="feature-item-title">{item.title}</h3>
                 <p className="feature-item-desc">{item.desc}</p>
