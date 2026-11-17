@@ -1668,225 +1668,408 @@
 }
 
 /* ==========================================================================
-   5. TOP 7 SOFTWARE CAPABILITIES (SPLIT VALUE PROPOSITION & BENTO CARDS)
+   5. ORBITAL SOFTWARE CAPABILITIES (PLANETARY HUB ON RIGHT & ORBITING CARDS)
    ========================================================================== */
 
 .split-features-section {
   position: relative;
   background: transparent;
-  padding: 60px 0 80px;
+  padding: 60px 0 90px;
+  overflow: hidden;
 }
 
-.split-features-layout {
-  display: grid;
-  grid-template-columns: 380px 1fr;
-  gap: 48px;
-  align-items: start;
-}
-
-.split-features-left {
+.orbital-features-layout {
   position: relative;
+  width: 100%;
+  max-width: 1260px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(290px, 340px) minmax(290px, 340px) 430px;
+  gap: 28px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 680px;
 }
 
-.split-features-sticky {
-  position: sticky;
-  top: 105px;
+/* Concentric Planetary Orbit Rings (Background) */
+.orbital-connectors-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+.orbit-ring {
+  stroke: rgba(196, 142, 37, 0.22);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 8;
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.orbit-ring-hub {
+  stroke: rgba(196, 142, 37, 0.35);
+  stroke-dasharray: 4 6;
+}
+
+.orbit-ring-inner {
+  stroke: rgba(196, 142, 37, 0.26);
+  stroke-dasharray: 6 8;
+}
+
+.orbit-ring-outer {
+  stroke: rgba(196, 142, 37, 0.2);
+  stroke-dasharray: 8 10;
+}
+
+.orbit-ring-aura {
+  stroke: rgba(196, 142, 37, 0.12);
+  stroke-dasharray: 10 12;
+}
+
+/* Card Columns */
+.orbital-cards-col {
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 3;
 }
 
-.split-features-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.2vw, 2.75rem);
-  font-weight: 800;
-  line-height: 1.18;
-  color: var(--text-primary);
-  margin: 18px 0 16px;
-  letter-spacing: -0.5px;
+.orbital-cards-col.outer-col {
+  gap: 22px;
+  justify-content: space-between;
 }
 
-.split-features-desc {
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.65;
-  margin-bottom: 24px;
+.orbital-cards-col.inner-col {
+  gap: 36px;
+  justify-content: center;
+  padding-top: 50px;
 }
 
-.split-features-meta {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
-}
-
-.meta-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: rgba(245, 190, 67, 0.08);
-  border: 1px solid var(--border-gold);
-  font-size: 11.5px;
-  font-weight: 700;
-  color: var(--color-champagne-gold);
-}
-
-.meta-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-bright-gold);
-  box-shadow: 0 0 8px var(--color-bright-gold);
-}
-
-.split-cta-btn {
-  width: fit-content;
-}
-
-.features-card-matrix {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.split-feature-card {
+/* Orbital Feature Cards */
+.orbital-feature-card {
+  position: relative;
   background: var(--bg-card);
   border: 1px solid var(--border-gold);
   border-radius: 20px;
-  padding: 24px 20px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  padding: 22px 24px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.split-feature-card:hover {
+.orbital-feature-card:hover {
   transform: translateY(-4px);
   border-color: var(--color-bright-gold);
   background: var(--bg-card-hover);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(245, 190, 67, 0.15);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 24px rgba(245, 190, 67, 0.16);
 }
 
 .feature-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
-.feature-icon-circle {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+.feature-icon-square {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
   background: rgba(245, 190, 67, 0.12);
   border: 1px solid rgba(245, 190, 67, 0.32);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-bright-gold);
-  box-shadow: 0 4px 14px rgba(245, 190, 67, 0.12);
+  box-shadow: 0 4px 12px rgba(245, 190, 67, 0.12);
   transition: all 0.3s ease;
 }
 
-.split-feature-card:hover .feature-icon-circle {
+.orbital-feature-card:hover .feature-icon-square {
   transform: scale(1.08);
   border-color: var(--color-bright-gold);
-  box-shadow: 0 0 20px rgba(245, 190, 67, 0.32);
+  box-shadow: 0 0 18px rgba(245, 190, 67, 0.32);
 }
 
 .feature-micro-tag {
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   color: var(--color-bright-gold);
   background: rgba(245, 190, 67, 0.1);
   border: 1px solid rgba(245, 190, 67, 0.28);
-  padding: 3px 9px;
+  padding: 3px 10px;
   border-radius: 999px;
 }
 
 .feature-item-title {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin: 0 0 8px;
-  line-height: 1.32;
+  margin: 0 0 6px;
+  line-height: 1.3;
 }
 
 .feature-item-desc {
-  font-size: 13.5px;
+  font-size: 12.5px;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.58;
   margin: 0;
 }
 
-.split-feature-card.card-featured-span {
-  grid-column: 1 / -1;
-  background: linear-gradient(135deg, rgba(33, 24, 16, 0.85) 0%, rgba(45, 33, 22, 0.85) 100%);
-  border: 1.5px solid rgba(245, 190, 67, 0.45);
+/* Right Circular Hub */
+.orbital-hub-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+}
+
+.orbital-hub-glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 190, 67, 0.22) 0%, rgba(245, 190, 67, 0.05) 50%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.orbital-hub-orb {
+  width: 430px;
+  height: 430px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(38, 27, 17, 0.96) 0%, rgba(18, 13, 8, 0.98) 100%);
+  border: 2px solid rgba(245, 190, 67, 0.45);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.75), 0 0 50px rgba(245, 190, 67, 0.14), inset 0 0 40px rgba(245, 190, 67, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 38px 32px;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.orbital-hub-orb:hover {
+  transform: scale(1.015);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 65px rgba(245, 190, 67, 0.22);
+}
+
+.orbital-hub-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: rgba(245, 190, 67, 0.12);
+  border: 1px solid rgba(245, 190, 67, 0.35);
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--color-bright-gold);
+  letter-spacing: 0.6px;
+  margin-bottom: 12px;
+}
+
+.orbital-hub-title {
+  font-family: var(--font-heading);
+  font-size: 1.82rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin: 0 0 10px;
+  letter-spacing: -0.3px;
+}
+
+.orbital-hub-desc {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  max-width: 280px;
+  margin: 0 0 16px;
+}
+
+.orbital-hub-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #E5B34C 0%, #C48E25 100%);
+  color: #1A1105;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(196, 142, 37, 0.35);
+  transition: all 0.3s ease;
+  margin-bottom: 14px;
+}
+
+.orbital-hub-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(229, 179, 76, 0.5);
+  background: linear-gradient(135deg, #F5C767 0%, #D89F30 100%);
+}
+
+.orbital-hub-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.orbital-hub-status .status-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.orbital-hub-status .status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.orbital-hub-status .status-dot.green {
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+}
+
+.orbital-hub-status .status-dot.gold {
+  background: var(--color-bright-gold);
+  box-shadow: 0 0 8px var(--color-bright-gold);
+}
+
+.orbital-hub-status .status-sep {
+  color: var(--text-secondary);
+  opacity: 0.6;
 }
 
 /* Light Mode Overrides */
-[data-theme='light'] .split-feature-card {
-  background: #ffffff;
-  border-color: rgba(180, 127, 28, 0.25);
-  box-shadow: 0 8px 24px rgba(180, 127, 28, 0.08);
+[data-theme='light'] .orbital-feature-card {
+  background: #FFFFFF;
+  border-color: rgba(180, 127, 28, 0.22);
+  box-shadow: 0 8px 30px rgba(180, 127, 28, 0.08);
 }
 
-[data-theme='light'] .split-feature-card:hover {
-  background: #ffffff;
+[data-theme='light'] .orbital-feature-card:hover {
+  background: #FFFFFF;
   border-color: #B47F1C;
   box-shadow: 0 16px 36px rgba(180, 127, 28, 0.2);
 }
 
-[data-theme='light'] .split-feature-card.card-featured-span {
-  background: linear-gradient(135deg, #FFFDF8 0%, #FDF5E6 100%);
-  border-color: #B47F1C;
-}
-
-[data-theme='light'] .feature-icon-circle {
-  background: #FDF3DF;
-  border-color: rgba(180, 127, 28, 0.4);
-  color: #8C5E09;
-}
-
-[data-theme='light'] .meta-pill {
-  background: #FDF3DF;
-  border-color: rgba(180, 127, 28, 0.35);
+[data-theme='light'] .feature-icon-square {
+  background: #FAF3E3;
+  border-color: rgba(180, 127, 28, 0.28);
   color: #8C5E09;
 }
 
 [data-theme='light'] .feature-micro-tag {
   background: #FDF3DF;
+  border-color: rgba(180, 127, 28, 0.32);
+  color: #8C5E09;
+}
+
+[data-theme='light'] .orbit-ring {
+  stroke: rgba(196, 142, 37, 0.22);
+}
+
+[data-theme='light'] .orbital-hub-orb {
+  background: radial-gradient(circle, #FFFDF8 0%, #FAF0DF 100%);
+  border-color: rgba(180, 127, 28, 0.38);
+  box-shadow: 0 15px 50px rgba(180, 127, 28, 0.16), 0 0 60px rgba(245, 190, 67, 0.18), inset 0 0 40px rgba(245, 190, 67, 0.08);
+}
+
+[data-theme='light'] .orbital-hub-glow {
+  background: radial-gradient(circle, rgba(245, 190, 67, 0.25) 0%, rgba(245, 190, 67, 0.08) 50%, transparent 70%);
+}
+
+[data-theme='light'] .orbital-hub-badge {
+  background: #FDF3DF;
   border-color: rgba(180, 127, 28, 0.35);
   color: #8C5E09;
 }
 
+[data-theme='light'] .orbital-hub-status .status-dot.gold {
+  background: #B47F1C;
+  box-shadow: 0 0 6px #B47F1C;
+}
+
 /* Responsive Breakpoints */
-@media (max-width: 1200px) {
-  .features-card-matrix {
+@media (max-width: 1100px) {
+  .orbital-features-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .orbital-connectors-svg {
+    display: none;
+  }
+
+  .orbital-hub-wrapper {
+    order: -1;
+    width: 100%;
+  }
+
+  .orbital-hub-orb {
+    width: 100%;
+    max-width: 580px;
+    height: auto;
+    border-radius: 28px;
+    padding: 36px 28px;
+  }
+
+  .orbital-hub-glow {
+    display: none;
+  }
+
+  .orbital-cards-col {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding-top: 0 !important;
+  }
+
+  .orbital-cards-col.inner-col {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 992px) {
-  .split-features-layout {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-
-  .split-features-sticky {
-    position: static;
+@media (max-width: 900px) {
+  .orbital-cards-col,
+  .orbital-cards-col.inner-col {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 640px) {
-  .features-card-matrix {
+@media (max-width: 600px) {
+  .orbital-cards-col,
+  .orbital-cards-col.inner-col {
     grid-template-columns: 1fr;
+  }
+
+  .orbital-hub-orb {
+    padding: 28px 18px;
+  }
+
+  .orbital-hub-title {
+    font-size: 1.55rem;
   }
 }
 

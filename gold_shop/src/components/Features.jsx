@@ -2,133 +2,145 @@ import React from 'react'
 import {
   SparklesIcon,
   BellIcon,
-  SmartphoneIcon,
   TrendingUpIcon,
   CreditCardIcon,
-  Building2Icon,
-  ShieldCheckIcon,
   ArrowRightIcon
 } from './Icons'
 
 export default function Features({ onBookDemo }) {
-  const featuresList = [
+  // Outer Column (3 cards on far left orbit)
+  const outerFeatures = [
     {
       id: 1,
       title: 'Complete Chit & Scheme Management',
       desc: 'Set up gold and silver schemes, enrol customers, post instalments and manage accounts and maturity. Paid amount, balance and maturity date are tracked automatically.',
-      icon: <SparklesIcon size={20} />,
-      badge: 'Core Engine'
+      icon: <SparklesIcon size={18} />,
+      badge: 'CORE ENGINE'
     },
     {
       id: 2,
-      title: 'Automated Follow-Up & Reminders',
-      desc: 'A follow-up module and push notifications flag overdue and upcoming instalments, reducing defaults without staff calls.',
-      icon: <BellIcon size={20} />,
-      badge: 'Zero Defaults'
+      title: 'Digital Gold & Digital Silver',
+      desc: 'Buy and sell at live rates with accounts, transactions and reports; keeps customers investing seamlessly between physical showroom purchases.',
+      icon: <TrendingUpIcon size={18} />,
+      badge: 'MICRO-SAVINGS'
     },
     {
       id: 3,
-      title: 'Customer Mobile App',
-      desc: 'Customers see chit balance, instalments paid and maturity date, pay online and receive live board rate alerts.',
-      icon: <SmartphoneIcon size={20} />,
-      badge: 'Live Passbook'
-    },
+      title: 'Integrated Payment',
+      desc: 'UPI, card & net banking auto-reconciliation with zero discrepancies, instant receipts and instant ledger updates.',
+      icon: <CreditCardIcon size={18} />,
+      badge: 'SHOWROOM SUITE'
+    }
+  ]
+
+  // Inner Column (2 cards staggered on inner orbit)
+  const innerFeatures = [
     {
       id: 4,
-      title: 'Digital Gold & Digital Silver',
-      desc: 'Buy and sell at live rates with accounts, transactions and reports; keeps customers investing between purchases.',
-      icon: <TrendingUpIcon size={20} />,
-      badge: 'Micro-Savings'
+      title: 'Complete Chit & Scheme',
+      desc: 'Set up schemes, enrol customers, track instalments, balance & automated maturities with precision.',
+      icon: <SparklesIcon size={18} />,
+      badge: 'CORE ENGINE'
     },
     {
       id: 5,
-      title: 'Integrated Payments & Reconciliation',
-      desc: 'UPI and gateway collections, receipts, refunds and bank reconciliation in one place, with traceable payments.',
-      icon: <CreditCardIcon size={20} />,
-      badge: 'T+0 Settlements'
-    },
-    {
-      id: 6,
-      title: 'Jewellery ERP Modules',
-      desc: 'Purchase, inventory, accounts (GST, day book), daily metal rate and purity masters, with outstanding liabilities and maturities on the dashboard.',
-      icon: <Building2Icon size={20} />,
-      badge: 'Showroom Suite'
-    },
-    {
-      id: 7,
-      title: 'Security, Audit Trail & Multi-Branch Control',
-      desc: 'User groups, role permissions, audit trail and branch management for accountability, regulatory compliance and showroom growth.',
-      icon: <ShieldCheckIcon size={20} />,
-      badge: '100% Audit-Ready',
-      isFeatured: true
+      title: 'Automated Follow-Up & Reminders',
+      desc: 'Intelligent WhatsApp, SMS & app notifications for upcoming instalments, balance dues, rate drops and maturity claims.',
+      icon: <BellIcon size={18} />,
+      badge: 'ZERO DEFAULTS'
     }
   ]
 
   return (
     <section id="features" className="section-padding split-features-section">
       <div className="section-container">
-        <div className="split-features-layout">
-          {/* LEFT COLUMN: Sticky Header & Value Proposition */}
-          <div className="split-features-left">
-            <div className="split-features-sticky">
-              <div className="section-badge">
-                <SparklesIcon size={14} />
-                <span>TOP 7 SOFTWARE CAPABILITIES</span>
+        <div className="split-features-layout orbital-features-layout">
+          {/* Concentric Planetary Orbit Rings centered around the Right Hub */}
+          <svg
+            className="orbital-connectors-svg"
+            viewBox="0 0 1240 680"
+            fill="none"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            {/* Hub outer halo ring */}
+            <circle cx="1020" cy="340" r="230" className="orbit-ring orbit-ring-hub" />
+            {/* Orbit ring 1 (passes through the 2 inner cards) */}
+            <circle cx="1020" cy="340" r="410" className="orbit-ring orbit-ring-inner" />
+            {/* Orbit ring 2 (passes through the 3 outer cards) */}
+            <circle cx="1020" cy="340" r="740" className="orbit-ring orbit-ring-outer" />
+            {/* Outermost faint cosmic aura */}
+            <circle cx="1020" cy="340" r="950" className="orbit-ring orbit-ring-aura" />
+          </svg>
+
+          {/* COLUMN 1: Far Left Outer Cards (3 Cards) */}
+          <div className="orbital-cards-col outer-col">
+            {outerFeatures.map((item) => (
+              <div key={item.id} className="orbital-feature-card">
+                <div className="feature-card-header">
+                  <div className="feature-icon-square">{item.icon}</div>
+                  <span className="feature-micro-tag">{item.badge}</span>
+                </div>
+                <h3 className="feature-item-title">{item.title}</h3>
+                <p className="feature-item-desc">{item.desc}</p>
               </div>
-              <h2 className="split-features-title">
-                Complete Jewellery Control.<br />
+            ))}
+          </div>
+
+          {/* COLUMN 2: Middle Inner Cards (2 Cards Staggered) */}
+          <div className="orbital-cards-col inner-col">
+            {innerFeatures.map((item) => (
+              <div key={item.id} className="orbital-feature-card">
+                <div className="feature-card-header">
+                  <div className="feature-icon-square">{item.icon}</div>
+                  <span className="feature-micro-tag">{item.badge}</span>
+                </div>
+                <h3 className="feature-item-title">{item.title}</h3>
+                <p className="feature-item-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* COLUMN 3: Right Circular Hub Orb */}
+          <div className="orbital-hub-wrapper">
+            <div className="orbital-hub-glow" aria-hidden="true" />
+            <div className="orbital-hub-orb">
+              <div className="orbital-hub-badge">
+                <span>★ CORE SOFTWARE CAPABILITIES</span>
+              </div>
+
+              <h2 className="orbital-hub-title">
+                Complete Jewellery<br />
+                Control.<br />
                 <span className="gold-text-gradient">Zero Manual Friction.</span>
               </h2>
-              <p className="split-features-desc">
-                Everything the modern jeweller gets to run showroom operations with 100% auditable clarity, alongside the white-labeled customer mobile app.
-              </p>
 
-              <div className="split-features-meta">
-                <div className="meta-pill">
-                  <span className="meta-dot" />
-                  <span>7 Enterprise Modules</span>
-                </div>
-                <div className="meta-pill">
-                  <span className="meta-dot" />
-                  <span>Cloud & Mobile Sync</span>
-                </div>
-              </div>
+              <p className="orbital-hub-desc">
+                Everything the modern jeweller gets to run showroom operations with 100% auditable clarity.
+              </p>
 
               {onBookDemo && (
                 <button
                   type="button"
-                  className="btn-primary-gold split-cta-btn"
+                  className="orbital-hub-cta"
                   onClick={onBookDemo}
                 >
                   <span>BOOK A FREE DEMO</span>
                   <ArrowRightIcon size={14} />
-                  <div className="btn-shimmer" />
                 </button>
               )}
-            </div>
-          </div>
 
-          {/* RIGHT COLUMN: Grid of Feature Cards (Matching Reference Layout) */}
-          <div className="split-features-right">
-            <div className="features-card-matrix">
-              {featuresList.map((item) => (
-                <div
-                  key={item.id}
-                  className={`split-feature-card ${item.isFeatured ? 'card-featured-span' : ''}`}
-                >
-                  <div className="feature-card-header">
-                    <div className="feature-icon-circle">
-                      {item.icon}
-                    </div>
-                    {item.badge && (
-                      <span className="feature-micro-tag">{item.badge}</span>
-                    )}
-                  </div>
-
-                  <h3 className="feature-item-title">{item.title}</h3>
-                  <p className="feature-item-desc">{item.desc}</p>
-                </div>
-              ))}
+              <div className="orbital-hub-status">
+                <span className="status-item">
+                  <span className="status-dot green" />
+                  <span>Live Rate Sync</span>
+                </span>
+                <span className="status-sep">•</span>
+                <span className="status-item">
+                  <span className="status-dot gold" />
+                  <span>99.9% Uptime</span>
+                </span>
+              </div>
             </div>
           </div>
         </div>
