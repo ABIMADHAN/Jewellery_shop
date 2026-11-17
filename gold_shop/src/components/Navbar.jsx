@@ -34,6 +34,7 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme }) {
     { name: 'Home', href: '#home', id: 'home' },
     { name: 'Challenges', href: '#challenges', id: 'challenges' },
     { name: 'Features', href: '#features', id: 'features' },
+    { name: 'Solution', href: '#solution', id: 'solution' },
     { name: 'How It Works', href: '#how-it-works', id: 'how-it-works' },
     { name: 'Customer App', href: '#product-preview', id: 'product-preview' },
     { name: 'Benefits', href: '#benefits', id: 'benefits' },

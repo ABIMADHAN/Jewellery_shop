@@ -1,210 +1,134 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   SparklesIcon,
-  CreditCardIcon,
   BellIcon,
   SmartphoneIcon,
   TrendingUpIcon,
+  CreditCardIcon,
   Building2Icon,
   ShieldCheckIcon,
-  BarChart3Icon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-  CheckIcon
+  ArrowRightIcon
 } from './Icons'
 
 export default function Features({ onBookDemo }) {
-  const [expandedCard, setExpandedCard] = useState(null)
-
-  const features = [
+  const featuresList = [
     {
       id: 1,
-      title: 'Chit & Scheme Management',
-      tag: 'Core Engine',
-      icon: <SparklesIcon size={22} />,
-      shortDesc: 'Create customizable gold and silver schemes, enrol members in seconds, and track instalments and maturities with zero ledger errors.',
-      details: [
-        'Supports 11-month weight accumulation schemes, fixed value plans, and flexible gram-saving options',
-        'Automatic gram calculation based on exact transaction-time live board rates',
-        'Automated maturity calculations with bonus months and discount vouchers upon gold purchase',
-        'Bulk import of existing paper passbooks and legacy software databases'
-      ]
+      title: 'Complete Chit & Scheme Management',
+      desc: 'Set up gold and silver schemes, enrol customers, post instalments and manage accounts and maturity. Paid amount, balance and maturity date are tracked automatically.',
+      icon: <SparklesIcon size={20} />,
+      badge: 'Core Engine'
     },
     {
       id: 2,
-      title: 'Automated Reminders',
-      tag: 'Zero Defaults',
-      icon: <BellIcon size={22} />,
-      shortDesc: 'Notify customers about upcoming or overdue instalments via automated WhatsApp, SMS, and push notifications.',
-      details: [
-        'Pre-scheduled WhatsApp reminders sent 3 days prior and on the instalment due date',
-        'Smart retry alerts for overdue customers with personalized payment link triggers',
-        'Customizable multilingual message templates in Tamil, Telugu, Hindi, Kannada & English',
-        '85%+ reduction in counter follow-up phone calls by sales personnel'
-      ]
+      title: 'Automated Follow-Up & Reminders',
+      desc: 'A follow-up module and push notifications flag overdue and upcoming instalments, reducing defaults without staff calls.',
+      icon: <BellIcon size={20} />,
+      badge: 'Zero Defaults'
     },
     {
       id: 3,
       title: 'Customer Mobile App',
-      tag: 'Android & iOS',
-      icon: <SmartphoneIcon size={22} />,
-      shortDesc: 'Empower shoppers to view active schemes, accumulated gold weight, live metal rates, payment history, and maturity dates on their phone.',
-      details: [
-        'White-labeled with your jewellery showroom brand, logo, and theme colors',
-        'Instant digital passbook with downloadable PDF tax receipts for every deposit',
-        'In-app live board rate ticker for 24K, 22K, 18K gold and 999 silver',
-        'Customer KYC upload and Aadhaar/PAN verification directly inside the app'
-      ]
+      desc: 'Customers see chit balance, instalments paid and maturity date, pay online and receive live board rate alerts.',
+      icon: <SmartphoneIcon size={20} />,
+      badge: 'Live Passbook'
     },
     {
       id: 4,
-      title: 'Digital Gold & Silver',
-      tag: 'Micro-Savings',
-      icon: <TrendingUpIcon size={22} />,
-      shortDesc: 'Manage digital metal transactions with live fractional gram rates, vault balance tracking, and physical delivery vouchers.',
-      details: [
-        'Allow customers to buy digital gold starting from as little as ₹100 anytime',
-        'Fractional gram accumulation with real-time rate locking backed by physical inventory',
-        'Seamless conversion to showroom jewellery, gold coins, or silver bars at maturity',
-        'Automated hedging ledger to protect showroom margins from spot price swings'
-      ]
+      title: 'Digital Gold & Digital Silver',
+      desc: 'Buy and sell at live rates with accounts, transactions and reports; keeps customers investing between purchases.',
+      icon: <TrendingUpIcon size={20} />,
+      badge: 'Micro-Savings'
     },
     {
       id: 5,
-      title: 'Integrated Payments',
-      tag: 'Instant UPI',
-      icon: <CreditCardIcon size={22} />,
-      shortDesc: 'Automate collections with dynamic QR codes, UPI autopay, net banking, debit cards, and instant bank reconciliation.',
-      details: [
-        'Zero-drop payment gateway integration supporting GPay, PhonePe, Paytm, and BHIM UPI',
-        'Instant T+0 payment settlements directly deposited into your current account',
-        'Automated reconciliation engine matching bank settlement files with customer schemes',
-        'Direct automated generation of GST-compliant digital receipts'
-      ]
+      title: 'Integrated Payments & Reconciliation',
+      desc: 'UPI and gateway collections, receipts, refunds and bank reconciliation in one place, with traceable payments.',
+      icon: <CreditCardIcon size={20} />,
+      badge: 'T+0 Settlements'
     },
     {
       id: 6,
       title: 'Jewellery ERP Modules',
-      tag: 'Showroom Suite',
-      icon: <Building2Icon size={22} />,
-      shortDesc: 'Streamline purchases, inventory, GST accounts, daily metal rates, cashier audit logs, and scheme liability tracking in one hub.',
-      details: [
-        'Real-time multi-branch inventory tracking with barcode and RFID tag integration',
-        'Automated stone weight deduction and purity wastage calculations at billing',
-        'Single-click daily board rate broadcast to digital showroom TV screens',
-        'Comprehensive balance sheet liability forecasting for upcoming scheme maturities'
-      ]
+      desc: 'Purchase, inventory, accounts (GST, day book), daily metal rate and purity masters, with outstanding liabilities and maturities on the dashboard.',
+      icon: <Building2Icon size={20} />,
+      badge: 'Showroom Suite'
     },
     {
       id: 7,
-      title: 'Security & Multi-Branch Control',
-      tag: 'Enterprise Shield',
-      icon: <ShieldCheckIcon size={22} />,
-      shortDesc: 'Granular role-based staff permissions, cryptographic QR passbook verification, immutable audit trails, and multi-store control.',
-      details: [
-        'Role-based permissions separating counter cashier, store manager, and super admin access',
-        'Counter QR scanner verification ensuring counterfeit or altered passbooks are rejected',
-        'Bank-grade 256-bit SSL encryption and automated cloud backups every 60 minutes',
-        'Multi-showroom centralized analytics tracking top-performing branches and sales staff'
-      ]
-    },
-    {
-      id: 8,
-      title: 'Smart Analytics & Forecasting',
-      tag: 'Predictive BI',
-      icon: <BarChart3Icon size={22} />,
-      shortDesc: 'Unlock actionable business intelligence with real-time maturity liability forecasting, branch sales leaderboards, and customer retention metrics.',
-      details: [
-        'Predictive bullion reserve forecasting to prepare showroom stock for upcoming monthly maturities',
-        'Customer retention tracking with automated re-enrolment campaigns upon scheme completion',
-        'Multi-branch performance leaderboards and counter staff collection KPIs',
-        'Instant one-click exports for GST compliance, P&L statements, and CA audit summaries'
-      ]
+      title: 'Security, Audit Trail & Multi-Branch Control',
+      desc: 'User groups, role permissions, audit trail and branch management for accountability, regulatory compliance and showroom growth.',
+      icon: <ShieldCheckIcon size={20} />,
+      badge: '100% Audit-Ready',
+      isFeatured: true
     }
   ]
 
-  const upperFeatures = features.slice(0, 4)
-  const lowerFeatures = features.slice(4, 8)
-
-  const toggleExpand = (id) => {
-    setExpandedCard(expandedCard === id ? null : id)
-  }
-
-  const renderCard = (feat, keySuffix = '') => {
-    const isExpanded = expandedCard === feat.id
-    return (
-      <div
-        key={`${feat.id}${keySuffix}`}
-        className={`feature-card features-marquee-card ${isExpanded ? 'card-open' : ''}`}
-      >
-        <div className="feature-card-top">
-          <div className="feature-icon-wrap">{feat.icon}</div>
-          <span className="feature-tag">{feat.tag}</span>
-        </div>
-
-        <h3 className="feature-title">{feat.title}</h3>
-        <p className="feature-desc">{feat.shortDesc}</p>
-
-        {/* Expandable Learn More Section */}
-        {isExpanded && (
-          <div className="feature-expanded-content">
-            <h5 className="expanded-heading">Key Capabilities:</h5>
-            <ul className="expanded-list">
-              {feat.details.map((item, idx) => (
-                <li key={idx}>
-                  <span className="check-bullet"><CheckIcon size={12} /></span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <button
-          type="button"
-          className="feature-learn-more-btn"
-          onClick={() => toggleExpand(feat.id)}
-          aria-expanded={isExpanded}
-        >
-          <span>{isExpanded ? 'Show Less' : 'Learn More'}</span>
-          {isExpanded ? <ChevronUpIcon size={14} /> : <ChevronDownIcon size={14} />}
-        </button>
-      </div>
-    )
-  }
-
   return (
-    <section id="features" className="features-section features-combined-section">
-      {/* Dual Row Marquee (Upper: Left-to-Right | Lower: Right-to-Left) */}
-      <div className="features-marquee-container">
-        {/* Upper Row: Left to Right */}
-        <div className="features-marquee-row marquee-ltr" aria-label="Features row moving left to right">
-          <div className="features-marquee-track">
-            <div className="features-marquee-group">
-              {[...upperFeatures, ...upperFeatures].map((feat, idx) =>
-                renderCard(feat, `-upper-g1-${idx}`)
-              )}
-            </div>
-            <div className="features-marquee-group" aria-hidden="true">
-              {[...upperFeatures, ...upperFeatures].map((feat, idx) =>
-                renderCard(feat, `-upper-g2-${idx}`)
+    <section id="features" className="section-padding split-features-section">
+      <div className="section-container">
+        <div className="split-features-layout">
+          {/* LEFT COLUMN: Sticky Header & Value Proposition */}
+          <div className="split-features-left">
+            <div className="split-features-sticky">
+              <div className="section-badge">
+                <SparklesIcon size={14} />
+                <span>TOP 7 SOFTWARE CAPABILITIES</span>
+              </div>
+              <h2 className="split-features-title">
+                Complete Jewellery Control.<br />
+                <span className="gold-text-gradient">Zero Manual Friction.</span>
+              </h2>
+              <p className="split-features-desc">
+                Everything the modern jeweller gets to run showroom operations with 100% auditable clarity, alongside the white-labeled customer mobile app.
+              </p>
+
+              <div className="split-features-meta">
+                <div className="meta-pill">
+                  <span className="meta-dot" />
+                  <span>7 Enterprise Modules</span>
+                </div>
+                <div className="meta-pill">
+                  <span className="meta-dot" />
+                  <span>Cloud & Mobile Sync</span>
+                </div>
+              </div>
+
+              {onBookDemo && (
+                <button
+                  type="button"
+                  className="btn-primary-gold split-cta-btn"
+                  onClick={onBookDemo}
+                >
+                  <span>BOOK A FREE DEMO</span>
+                  <ArrowRightIcon size={14} />
+                  <div className="btn-shimmer" />
+                </button>
               )}
             </div>
           </div>
-        </div>
 
-        {/* Lower Row: Right to Left */}
-        <div className="features-marquee-row marquee-rtl" aria-label="Features row moving right to left">
-          <div className="features-marquee-track">
-            <div className="features-marquee-group">
-              {[...lowerFeatures, ...lowerFeatures].map((feat, idx) =>
-                renderCard(feat, `-lower-g1-${idx}`)
-              )}
-            </div>
-            <div className="features-marquee-group" aria-hidden="true">
-              {[...lowerFeatures, ...lowerFeatures].map((feat, idx) =>
-                renderCard(feat, `-lower-g2-${idx}`)
-              )}
+          {/* RIGHT COLUMN: Grid of Feature Cards (Matching Reference Layout) */}
+          <div className="split-features-right">
+            <div className="features-card-matrix">
+              {featuresList.map((item) => (
+                <div
+                  key={item.id}
+                  className={`split-feature-card ${item.isFeatured ? 'card-featured-span' : ''}`}
+                >
+                  <div className="feature-card-header">
+                    <div className="feature-icon-circle">
+                      {item.icon}
+                    </div>
+                    {item.badge && (
+                      <span className="feature-micro-tag">{item.badge}</span>
+                    )}
+                  </div>
+
+                  <h3 className="feature-item-title">{item.title}</h3>
+                  <p className="feature-item-desc">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -212,4 +136,3 @@ export default function Features({ onBookDemo }) {
     </section>
   )
 }
-

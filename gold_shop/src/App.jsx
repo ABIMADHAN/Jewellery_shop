@@ -67,13 +67,13 @@ function App() {
         {/* 3. 5 BIGGEST CHALLENGES SECTION */}
         <Challenges />
 
-        {/* 4. SOLUTION SECTION (SPLIT ARCHITECTURE ECOSYSTEM) */}
-        <Solution
+        {/* 4. TOP 7 FEATURES SECTION (SPLIT VALUE PROPOSITION & CARDS GRID) */}
+        <Features
           onBookDemo={() => setIsDemoModalOpen(true)}
         />
 
-        {/* 5. 8 POWERFUL FEATURES (WITH INTERACTIVE LEARN MORE) */}
-        <Features
+        {/* 5. SOLUTION SECTION (SPLIT ARCHITECTURE ECOSYSTEM) */}
+        <Solution
           onBookDemo={() => setIsDemoModalOpen(true)}
         />
 
