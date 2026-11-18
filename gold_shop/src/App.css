@@ -1,7 +1,9 @@
 /* ==========================================================================
    THANGANIDHI — Luxury Jewellery Landing Page Stylesheet
    ========================================================================== */
-
+.theme-toggle-pill {
+  display: none !important;
+}
 .thanganidhi-app {
   min-height: 100vh;
   position: relative;
