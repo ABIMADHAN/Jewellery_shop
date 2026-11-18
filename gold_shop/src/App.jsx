@@ -7,6 +7,7 @@ import Features from './components/Features'
 import HowItWorks from './components/HowItWorks'
 import ProductPreview from './components/ProductPreview'
 import WhyChooseUs from './components/WhyChooseUs'
+import PromiseSection from './components/PromiseSection'
 import Pricing from './components/Pricing'
 import DemoBookingSection from './components/DemoBookingSection'
 import Footer from './components/Footer'
@@ -106,6 +107,9 @@ function App() {
         <WhyChooseUs
           onBookDemo={() => setIsDemoModalOpen(true)}
         />
+
+        {/* 8.5. PROMISE SECTION (OUTCOMES & IMAGE) */}
+        <PromiseSection />
 
         {/* 9. TRANSPARENT PRICING & PAYMENT PLANS */}
         <Pricing

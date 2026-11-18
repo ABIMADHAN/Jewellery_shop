@@ -5903,6 +5903,480 @@
 }
 
 /* ==========================================================================
+   8.5. PROMISE & OUTCOMES SECTION (LESS CHASING. MORE SHINING.)
+   ========================================================================== */
+
+.promise-section {
+  position: relative;
+  background: transparent;
+  padding: 48px 24px 44px;
+}
+
+.promise-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* Header Row */
+.promise-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.promise-title-group {
+  max-width: 720px;
+}
+
+.promise-main-heading {
+  font-size: clamp(2.4rem, 4.2vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.8px;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.promise-highlight-italic {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  background: var(--gold-text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.4px;
+  margin-top: 2px;
+}
+
+[data-theme='light'] .promise-highlight-italic {
+  background: linear-gradient(135deg, #B47F1C 0%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.promise-subheading {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-top: 14px;
+}
+
+/* Informational Disclaimer Pill */
+.promise-disclaimer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: rgba(33, 24, 16, 0.7);
+  border: 1px solid var(--border-gold);
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 500;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  align-self: flex-end;
+}
+
+[data-theme='light'] .promise-disclaimer-pill {
+  background: #FFFFFF;
+  border-color: rgba(180, 127, 28, 0.3);
+  color: #64748B;
+  box-shadow: 0 4px 14px rgba(180, 127, 28, 0.08);
+}
+
+.disclaimer-info-icon {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* 2-Column Grid Layout */
+.promise-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 36px;
+  align-items: stretch;
+}
+
+/* Left Column: Reserved Image Space Frame */
+.promise-image-col {
+  display: flex;
+}
+
+.promise-image-frame {
+  width: 100%;
+  min-height: 480px;
+  border-radius: 28px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+[data-theme='light'] .promise-image-frame {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.promise-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 24px;
+  border: none;
+  outline: none;
+}
+
+.promise-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.promise-placeholder-guide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.65;
+  transition: opacity 0.25s ease;
+}
+
+.promise-placeholder-guide:hover {
+  opacity: 0.9;
+}
+
+.placeholder-tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-bright-gold);
+  background: rgba(245, 190, 67, 0.12);
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border-gold);
+}
+
+[data-theme='light'] .placeholder-tag {
+  color: #B47F1C;
+  background: rgba(180, 127, 28, 0.08);
+  border-color: rgba(180, 127, 28, 0.3);
+}
+
+/* Right Column: Outcomes List */
+.promise-outcomes-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.outcomes-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.outcomes-nav-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+[data-theme='light'] .outcomes-nav-label {
+  color: #64748B;
+}
+
+.outcomes-nav-hint {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-bright-gold);
+  opacity: 0.85;
+}
+
+[data-theme='light'] .outcomes-nav-hint {
+  color: #B47F1C;
+}
+
+.outcomes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+/* Outcome Card Button - Springy Snake/Ladder Step Pop Effect */
+.outcome-card-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-radius: 18px;
+  background: rgba(26, 19, 13, 0.72);
+  border: 1.5px solid rgba(212, 175, 55, 0.18);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.28s ease,
+              border-color 0.25s ease,
+              background 0.25s ease;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme='light'] .outcome-card-btn {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(180, 127, 28, 0.2);
+  box-shadow: 0 4px 14px rgba(180, 127, 28, 0.06);
+}
+
+/* Radiant Ladder Rung Step Indicator */
+.outcome-card-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14%;
+  bottom: 14%;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background: linear-gradient(180deg, var(--color-bright-gold), #D4AF37);
+  opacity: 0;
+  transform: scaleY(0.2);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+}
+
+[data-theme='light'] .outcome-card-btn::before {
+  background: linear-gradient(180deg, #B47F1C, #D4AF37);
+}
+
+/* Ladder / Snake Stepped Pop (Odd vs Even Stepping Motion) */
+.outcome-card-btn:hover,
+.outcome-card-btn.active-outcome {
+  border-color: var(--color-bright-gold);
+  background: rgba(33, 24, 16, 0.95);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(245, 190, 67, 0.22);
+  z-index: 5;
+}
+
+.outcome-card-btn:nth-child(odd):hover,
+.outcome-card-btn:nth-child(odd).active-outcome {
+  transform: translateX(11px) translateY(-3px) scale(1.02);
+}
+
+.outcome-card-btn:nth-child(even):hover,
+.outcome-card-btn:nth-child(even).active-outcome {
+  transform: translateX(6px) translateY(-3px) scale(1.02);
+}
+
+[data-theme='light'] .outcome-card-btn:hover,
+[data-theme='light'] .outcome-card-btn.active-outcome {
+  border-color: #B47F1C;
+  background: #FFFFFF;
+  box-shadow: 0 10px 28px rgba(180, 127, 28, 0.2), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.outcome-card-btn:hover::before,
+.outcome-card-btn.active-outcome::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.outcome-card-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.outcome-num {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+  min-width: 22px;
+  letter-spacing: 0.4px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+  display: inline-block;
+}
+
+[data-theme='light'] .outcome-num {
+  color: #94A3B8;
+}
+
+.outcome-card-btn:hover .outcome-num,
+.active-outcome .outcome-num {
+  color: var(--color-bright-gold);
+  transform: scale(1.15) translateX(2px);
+}
+
+[data-theme='light'] .outcome-card-btn:hover .outcome-num,
+[data-theme='light'] .active-outcome .outcome-num {
+  color: #B47F1C;
+}
+
+.outcome-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: rgba(245, 190, 67, 0.1);
+  border: 1px solid rgba(245, 190, 67, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-bright-gold);
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+[data-theme='light'] .outcome-icon-box {
+  background: rgba(180, 127, 28, 0.08);
+  border-color: rgba(180, 127, 28, 0.22);
+  color: #B47F1C;
+}
+
+.outcome-card-btn:hover .outcome-icon-box,
+.active-outcome .outcome-icon-box {
+  background: rgba(245, 190, 67, 0.22);
+  border-color: var(--color-bright-gold);
+  transform: scale(1.16) rotate(-3deg);
+  box-shadow: 0 0 12px rgba(245, 190, 67, 0.32);
+}
+
+[data-theme='light'] .outcome-card-btn:hover .outcome-icon-box,
+[data-theme='light'] .active-outcome .outcome-icon-box {
+  background: rgba(180, 127, 28, 0.16);
+  border-color: #B47F1C;
+  box-shadow: 0 0 12px rgba(180, 127, 28, 0.25);
+}
+
+.outcome-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.outcome-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+  letter-spacing: 0.1px;
+  transition: color 0.2s ease;
+}
+
+[data-theme='light'] .outcome-title {
+  color: #1E293B;
+}
+
+.outcome-subtitle {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+[data-theme='light'] .outcome-subtitle {
+  color: #64748B;
+}
+
+.outcome-stat-block {
+  margin-left: 14px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.outcome-stat-val {
+  font-size: 18.5px;
+  font-weight: 800;
+  color: var(--color-bright-gold);
+  letter-spacing: -0.4px;
+  white-space: nowrap;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), text-shadow 0.2s ease;
+}
+
+[data-theme='light'] .outcome-stat-val {
+  color: #B47F1C;
+}
+
+.outcome-card-btn:hover .outcome-stat-val,
+.active-outcome .outcome-stat-val {
+  transform: scale(1.1);
+  text-shadow: 0 0 12px rgba(245, 190, 67, 0.45);
+}
+
+[data-theme='light'] .outcome-card-btn:hover .outcome-stat-val,
+[data-theme='light'] .active-outcome .outcome-stat-val {
+  text-shadow: 0 0 10px rgba(180, 127, 28, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .promise-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .promise-disclaimer-pill {
+    align-self: flex-start;
+  }
+
+  .promise-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .promise-image-frame {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .outcome-card-btn {
+    padding: 13px 14px;
+  }
+
+  .outcome-card-left {
+    gap: 10px;
+  }
+
+  .outcome-title {
+    font-size: 13.5px;
+  }
+
+  .outcome-subtitle {
+    font-size: 11.5px;
+  }
+
+  .outcome-stat-val {
+    font-size: 16px;
+  }
+}
+
+/* ==========================================================================
    9. TRANSPARENT PRICING & CHIT PAYMENT PLANS SECTION (LUXURY JEWELLERY THEME)
    ========================================================================== */
 

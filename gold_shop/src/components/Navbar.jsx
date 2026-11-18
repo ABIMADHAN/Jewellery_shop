@@ -36,7 +36,7 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme, currentFont =
     const handleScroll = () => {
       setScrolled(window.scrollY > 80)
 
-      const sections = ['home', 'challenges', 'solution', 'features', 'how-it-works', 'product-preview', 'benefits', 'demo-booking']
+      const sections = ['home', 'challenges', 'solution', 'features', 'how-it-works', 'product-preview', 'benefits', 'promise', 'pricing', 'demo-booking']
       const scrollPos = window.scrollY + 180
 
       for (const sectionId of sections) {
