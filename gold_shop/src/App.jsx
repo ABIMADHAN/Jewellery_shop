@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Challenges from './components/Challenges'
-import ScrollCurvedArrow from './components/ScrollCurvedArrow'
 import Solution from './components/Solution'
 import Features from './components/Features'
 import HowItWorks from './components/HowItWorks'
@@ -82,9 +81,6 @@ function App() {
           onGetStarted={() => scrollToSection('demo-booking')}
           onExploreFeatures={() => scrollToSection('solution')}
         />
-
-        {/* 2.5. SCROLL-DRIVEN CURVED ARROW: CONNECTS HERO END TO CHALLENGES */}
-        <ScrollCurvedArrow targetId="challenges" />
 
         {/* 3. 5 BIGGEST CHALLENGES SECTION */}
         <Challenges />
