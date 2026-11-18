@@ -45,7 +45,7 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme, currentFont =
           const top = el.offsetTop
           const height = el.offsetHeight
           if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(sectionId)
+            setActiveSection(sectionId === 'features' ? 'solution' : sectionId === 'promise' ? 'benefits' : sectionId)
             break
           }
         }
@@ -59,12 +59,10 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme, currentFont =
   const navLinks = [
     { name: 'Home', href: '#home', id: 'home' },
     { name: 'Challenges', href: '#challenges', id: 'challenges' },
-    { name: 'Features', href: '#features', id: 'features' },
     { name: 'Solution', href: '#solution', id: 'solution' },
     { name: 'How It Works', href: '#how-it-works', id: 'how-it-works' },
     { name: 'Customer App', href: '#product-preview', id: 'product-preview' },
     { name: 'Benefits', href: '#benefits', id: 'benefits' },
-    { name: 'Promise', href: '#promise', id: 'promise' },
     { name: 'Pricing', href: '#pricing', id: 'pricing' },
     { name: 'Contact', href: '#demo-booking', id: 'demo-booking' },
   ]

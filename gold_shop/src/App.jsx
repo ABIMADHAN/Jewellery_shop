@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Challenges from './components/Challenges'
+import ScrollCurvedArrow from './components/ScrollCurvedArrow'
 import Solution from './components/Solution'
 import Features from './components/Features'
 import HowItWorks from './components/HowItWorks'
@@ -79,19 +80,22 @@ function App() {
         {/* 2. HERO SECTION (REFERENCE IMAGE 1 COMPOSITION) */}
         <Hero
           onGetStarted={() => scrollToSection('demo-booking')}
-          onExploreFeatures={() => scrollToSection('features')}
+          onExploreFeatures={() => scrollToSection('solution')}
         />
+
+        {/* 2.5. SCROLL-DRIVEN CURVED ARROW: CONNECTS HERO END TO CHALLENGES */}
+        <ScrollCurvedArrow targetId="challenges" />
 
         {/* 3. 5 BIGGEST CHALLENGES SECTION */}
         <Challenges />
 
-        {/* 4. TOP 7 FEATURES SECTION (SPLIT VALUE PROPOSITION & CARDS GRID) */}
-        <Features
+        {/* 4. SOLUTION SECTION (SPLIT ARCHITECTURE ECOSYSTEM) */}
+        <Solution
           onBookDemo={() => setIsDemoModalOpen(true)}
         />
 
-        {/* 5. SOLUTION SECTION (SPLIT ARCHITECTURE ECOSYSTEM) */}
-        <Solution
+        {/* 5. TOP 7 FEATURES SECTION (SPLIT VALUE PROPOSITION & CARDS GRID) */}
+        <Features
           onBookDemo={() => setIsDemoModalOpen(true)}
         />
 

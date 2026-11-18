@@ -133,16 +133,15 @@ export default function Hero({ onGetStarted, onExploreFeatures }) {
         <div className="hero-center-column">
           {/* Main Hero Headings */}
           <h1 className="hero-main-title">
-            <span className="title-white">RUN HIGH-PROFIT JEWELLERY</span>
-            <span className="title-white">SCHEMES</span>
-            <span className="title-gold-emboss">WITH ZERO MANUAL STRESS</span>
+            <span className="hero-brand-top">THANGANIDHI</span>
+            <span className="hero-catchy-lead">
+              Run High-Profit Jewellery Schemes <span className="hero-catchy-gold">With Zero Manual Stress.</span>
+            </span>
           </h1>
 
-          {/* Subtitle description */}
+          {/* Clean, Non-Fussy Subtitle */}
           <p className="hero-description">
-            One easy software for jewellers to manage gold chit schemes, digital gold &amp; silver,
-            daily board rates, multi-language customer passbooks, cashier audits, and multi-branch
-            stock — all in one place.
+            The smart gold scheme software for jewellery showrooms — automate chit schemes, digital gold savings, live board rates, and multi-branch audits in one place.
           </p>
 
           {/* Three Compact Highlights */}
