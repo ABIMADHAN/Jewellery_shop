@@ -175,7 +175,26 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme, currentFont =
               <ArrowUpRightIcon size={14} />
             </button>
 
-           
+            {/* Dark/Light Mode Pill Toggle */}
+            <button
+              type="button"
+              className="theme-toggle-pill"
+              onClick={onToggleTheme}
+              aria-label="Toggle dark/light theme"
+              title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+            >
+              {theme === 'dark' ? (
+                <>
+                  <MoonIcon size={14} className="theme-icon" />
+                  <span className="theme-text">DARK</span>
+                </>
+              ) : (
+                <>
+                  <SunIcon size={14} className="theme-icon" />
+                  <span className="theme-text">LIGHT</span>
+                </>
+              )}
+            </button>
 
             {/* Mobile Menu Hamburger */}
             <button
@@ -221,6 +240,25 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme, currentFont =
                   </option>
                 ))}
               </select>
+
+              <button
+                type="button"
+                className="theme-toggle-pill full-w-toggle"
+                onClick={onToggleTheme}
+                aria-label="Toggle dark/light theme"
+              >
+                {theme === 'dark' ? (
+                  <>
+                    <MoonIcon size={14} className="theme-icon" />
+                    <span className="theme-text">SWITCH TO LIGHT MODE</span>
+                  </>
+                ) : (
+                  <>
+                    <SunIcon size={14} className="theme-icon" />
+                    <span className="theme-text">SWITCH TO DARK MODE</span>
+                  </>
+                )}
+              </button>
 
               <button
                 type="button"

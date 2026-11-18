@@ -16,7 +16,9 @@ import LegalModal from './components/LegalModal'
 import './App.css'
 
 function App() {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('thanganidhi_theme') || 'light'
+  })
   const [currentFont, setCurrentFont] = useState(() => {
     return localStorage.getItem('thanganidhi_font') || 'Manrope'
   })
@@ -25,6 +27,7 @@ function App() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('thanganidhi_theme', theme)
   }, [theme])
 
   useEffect(() => {
