@@ -1,11 +1,36 @@
-import React, { useState, useEffect } from 'react'
-import { SparklesIcon, ArrowUpRightIcon, MoonIcon, SunIcon, KalashEmblem } from './Icons'
+import React, { useState, useEffect, useRef } from 'react'
+import { SparklesIcon, ArrowUpRightIcon, MoonIcon, SunIcon, KalashEmblem, TypeIcon } from './Icons'
 
-export default function Navbar({ onBookDemo, theme, onToggleTheme }) {
+const AVAILABLE_FONTS = [
+  { name: 'Manrope', label: 'Manrope (Default)', tag: 'Default Sans' },
+  { name: 'Playfair Display', label: 'Playfair Display', tag: 'Luxury Serif' },
+  { name: 'Cinzel', label: 'Cinzel', tag: 'Royal Classical' },
+  { name: 'Inter', label: 'Inter', tag: 'Precision UI' },
+  { name: 'Outfit', label: 'Outfit', tag: 'Geometric Sans' },
+  { name: 'Plus Jakarta Sans', label: 'Plus Jakarta Sans', tag: 'Modern Tech' },
+  { name: 'Cormorant Garamond', label: 'Cormorant Garamond', tag: 'Haute Horlogerie' },
+  { name: 'Montserrat', label: 'Montserrat', tag: 'Bold Architecture' },
+  { name: 'Poppins', label: 'Poppins', tag: 'Rounded Modern' },
+  { name: 'Urbanist', label: 'Urbanist', tag: 'Sleek Minimal' }
+]
+
+export default function Navbar({ onBookDemo, theme, onToggleTheme, currentFont = 'Manrope', onChangeFont }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [isRateToastVisible, setIsRateToastVisible] = useState(true)
+  const [fontDropdownOpen, setFontDropdownOpen] = useState(false)
+  const fontMenuRef = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (fontMenuRef.current && !fontMenuRef.current.contains(e.target)) {
+        setFontDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +64,7 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme }) {
     { name: 'How It Works', href: '#how-it-works', id: 'how-it-works' },
     { name: 'Customer App', href: '#product-preview', id: 'product-preview' },
     { name: 'Benefits', href: '#benefits', id: 'benefits' },
+    { name: 'Pricing', href: '#pricing', id: 'pricing' },
     { name: 'Contact', href: '#demo-booking', id: 'demo-booking' },
   ]
 
@@ -75,8 +101,9 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme }) {
           <ul className="nav-links">
             {navLinks.map((item) => {
               const isActive = activeSection === item.id
+              const isSecondary = item.id === 'challenges' || item.id === 'benefits'
               return (
-                <li key={item.id} className="nav-item">
+                <li key={item.id} className={`nav-item ${isSecondary ? 'nav-item-secondary' : ''}`}>
                   <a
                     href={item.href}
                     className={`nav-link-btn ${isActive ? 'active' : ''}`}
@@ -93,6 +120,49 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme }) {
 
           {/* Action Buttons */}
           <div className="nav-actions">
+            {/* 10 Fonts Selector Dropdown */}
+            <div className="font-picker-container" ref={fontMenuRef}>
+              <button
+                type="button"
+                className="font-picker-toggle-btn"
+                onClick={() => setFontDropdownOpen(!fontDropdownOpen)}
+                aria-label="Select website font style"
+                title="Select Website Font Style (10 Available)"
+                aria-expanded={fontDropdownOpen}
+              >
+                <TypeIcon size={14} className="font-icon" />
+                <span className="font-name-label">{currentFont}</span>
+                <span className="font-chevron">{fontDropdownOpen ? '▲' : '▼'}</span>
+              </button>
+
+              {fontDropdownOpen && (
+                <div className="font-dropdown-menu">
+                  <div className="font-dropdown-header">
+                    <span>SELECT FONT STYLE (10)</span>
+                  </div>
+                  <ul className="font-options-list">
+                    {AVAILABLE_FONTS.map((f) => (
+                      <li key={f.name}>
+                        <button
+                          type="button"
+                          className={`font-option-btn ${currentFont === f.name ? 'selected' : ''}`}
+                          style={{ fontFamily: `'${f.name}', sans-serif` }}
+                          onClick={() => {
+                            if (onChangeFont) onChangeFont(f.name)
+                            setFontDropdownOpen(false)
+                          }}
+                        >
+                          <span className="font-option-name">{f.label}</span>
+                          <span className="font-option-tag">{f.tag}</span>
+                          {currentFont === f.name && <span className="font-check-mark">✓</span>}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
             {/* Book Showroom Demo Button */}
             <button
               type="button"
@@ -100,30 +170,11 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme }) {
               onClick={onBookDemo}
             >
               <SparklesIcon className="sparkle-icon" size={14} />
-              <span>BOOK SHOWROOM DEMO</span>
+              <span>BOOK DEMO</span>
               <ArrowUpRightIcon size={14} />
             </button>
 
-            {/* Dark/Light Mode Pill
-            <button
-              type="button"
-              className="theme-toggle-pill"
-              onClick={onToggleTheme}
-              aria-label="Toggle dark/light theme"
-              title="Switch Theme"
-            >
-              {theme === 'dark' ? (
-                <>
-                  <MoonIcon size={13} className="theme-icon" />
-                  <span>DARK</span>
-                </>
-              ) : (
-                <>
-                  <SunIcon size={13} className="theme-icon" />
-                  <span>LIGHT</span>
-                </>
-              )}
-            </button> */}
+           
 
             {/* Mobile Menu Hamburger */}
             <button
@@ -155,6 +206,21 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme }) {
               ))}
             </ul>
             <div className="mobile-actions">
+              <div className="mobile-font-picker-label">CHOOSE WEBSITE FONT (10):</div>
+              <select
+                className="mobile-font-select"
+                value={currentFont}
+                onChange={(e) => {
+                  if (onChangeFont) onChangeFont(e.target.value)
+                }}
+              >
+                {AVAILABLE_FONTS.map((f) => (
+                  <option key={f.name} value={f.name}>
+                    {f.label} — {f.tag}
+                  </option>
+                ))}
+              </select>
+
               <button
                 type="button"
                 className="btn-book-demo full-w"

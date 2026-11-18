@@ -7,6 +7,7 @@ import Features from './components/Features'
 import HowItWorks from './components/HowItWorks'
 import ProductPreview from './components/ProductPreview'
 import WhyChooseUs from './components/WhyChooseUs'
+import Pricing from './components/Pricing'
 import DemoBookingSection from './components/DemoBookingSection'
 import Footer from './components/Footer'
 import ShowroomDemoModal from './components/ShowroomDemoModal'
@@ -15,12 +16,23 @@ import './App.css'
 
 function App() {
   const [theme, setTheme] = useState('light')
+  const [currentFont, setCurrentFont] = useState(() => {
+    return localStorage.getItem('thanganidhi_font') || 'Manrope'
+  })
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
   const [legalModalState, setLegalModalState] = useState({ isOpen: false, type: 'privacy' })
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
+
+  useEffect(() => {
+    const fontValue = currentFont === 'Manrope'
+      ? "'Manrope', sans-serif"
+      : `'${currentFont}', sans-serif`
+    document.documentElement.style.setProperty('--font-active', fontValue)
+    localStorage.setItem('thanganidhi_font', currentFont)
+  }, [currentFont])
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
@@ -55,6 +67,8 @@ function App() {
         theme={theme}
         onToggleTheme={toggleTheme}
         onBookDemo={() => setIsDemoModalOpen(true)}
+        currentFont={currentFont}
+        onChangeFont={setCurrentFont}
       />
 
       <main className="main-content">
@@ -93,7 +107,12 @@ function App() {
           onBookDemo={() => setIsDemoModalOpen(true)}
         />
 
-        {/* 9. DEMO BOOKING FORM SECTION */}
+        {/* 9. TRANSPARENT PRICING & PAYMENT PLANS */}
+        <Pricing
+          onBookDemo={() => setIsDemoModalOpen(true)}
+        />
+
+        {/* 10. DEMO BOOKING FORM SECTION */}
         <DemoBookingSection />
       </main>
 
