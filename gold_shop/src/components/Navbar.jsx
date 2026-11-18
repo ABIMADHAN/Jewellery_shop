@@ -64,6 +64,7 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme, currentFont =
     { name: 'How It Works', href: '#how-it-works', id: 'how-it-works' },
     { name: 'Customer App', href: '#product-preview', id: 'product-preview' },
     { name: 'Benefits', href: '#benefits', id: 'benefits' },
+    { name: 'Promise', href: '#promise', id: 'promise' },
     { name: 'Pricing', href: '#pricing', id: 'pricing' },
     { name: 'Contact', href: '#demo-booking', id: 'demo-booking' },
   ]
