@@ -5,10 +5,11 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+  const [isRateToastVisible, setIsRateToastVisible] = useState(true)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30)
+      setScrolled(window.scrollY > 80)
 
       const sections = ['home', 'challenges', 'solution', 'features', 'how-it-works', 'product-preview', 'benefits', 'demo-booking']
       const scrollPos = window.scrollY + 180
@@ -57,24 +58,10 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme }) {
   }
 
   return (
-    <header className={`navbar-wrapper ${scrolled ? 'nav-scrolled' : ''}`}>
-      {/* 1. TOP LIVE BOARD RATE TICKER */}
-      <div className="top-ticker-bar">
-        <div className="ticker-capsule">
-          <span className="live-dot" />
-          <span className="ticker-label">LIVE BOARD RATE:</span>
-          <span className="ticker-gold">
-            24K GOLD <strong className="gold-val">₹7,840/g</strong> <span className="delta-up">(+0.8%)</span>
-          </span>
-          <span className="ticker-separator">•</span>
-          <span className="ticker-silver">
-            999 SILVER <strong className="silver-val">₹94.50/g</strong>
-          </span>
-        </div>
-      </div>
-
-      {/* 2. MAIN NAVIGATION */}
-      <nav className="main-nav">
+    <>
+      <header className={`navbar-wrapper ${scrolled ? 'nav-scrolled' : ''}`}>
+        {/* MAIN NAVIGATION */}
+        <nav className="main-nav">
         <div className="nav-container">
           {/* Brand Logo */}
           <a href="#home" className="brand-logo" onClick={(e) => handleNavClick(e, '#home')}>
@@ -86,17 +73,22 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme }) {
 
           {/* Desktop Nav Links */}
           <ul className="nav-links">
-            {navLinks.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={item.href}
-                  className={`nav-link-btn ${activeSection === item.id ? 'active' : ''}`}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
+            {navLinks.map((item) => {
+              const isActive = activeSection === item.id
+              return (
+                <li key={item.id} className="nav-item">
+                  <a
+                    href={item.href}
+                    className={`nav-link-btn ${isActive ? 'active' : ''}`}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                  >
+                    {isActive && <span className="nav-active-pip" aria-hidden="true" />}
+                    <span>{item.name}</span>
+                    {item.id === 'product-preview' && <span className="nav-chip-badge">APP</span>}
+                  </a>
+                </li>
+              )
+            })}
           </ul>
 
           {/* Action Buttons */}
@@ -180,5 +172,32 @@ export default function Navbar({ onBookDemo, theme, onToggleTheme }) {
         )}
       </nav>
     </header>
-  )
+
+    {/* FLOATING LIVE RATE NOTIFICATION (POPPING OUT FROM RIGHT SIDE CORNER) */}
+    {isRateToastVisible && (
+      <aside className="rate-toast-notification" aria-label="Live Bullion Rates">
+        <div className="rate-toast-capsule">
+          <span className="live-dot" aria-hidden="true" />
+          <span className="rate-toast-tag">LIVE BOARD RATE:</span>
+          <span className="rate-toast-gold">
+            24K GOLD <strong className="gold-val">₹7,840/g</strong> <span className="delta-up">(+0.8%)</span>
+          </span>
+          <span className="ticker-separator" aria-hidden="true">•</span>
+          <span className="rate-toast-silver">
+            999 SILVER <strong className="silver-val">₹94.50/g</strong>
+          </span>
+          <button
+            type="button"
+            className="rate-toast-close"
+            onClick={() => setIsRateToastVisible(false)}
+            aria-label="Dismiss live rates notification"
+            title="Dismiss notification"
+          >
+            ×
+          </button>
+        </div>
+      </aside>
+    )}
+  </>
+)
 }

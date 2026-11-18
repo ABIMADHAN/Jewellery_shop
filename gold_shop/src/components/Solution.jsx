@@ -39,19 +39,17 @@ export default function Solution() {
       <div className="section-container">
         <div className="solution-grid">
           {/* LEFT: Solution Product Showcase Video */}
-          <div className="solution-visual-column">
-            <div className="solution-video-card">
-              <video
-                src={normalVideo}
-                autoPlay
-                loop
-                muted
-                playsInline
-                disablePictureInPicture
-                disableRemotePlayback
-                className="solution-video-player"
-              />
-            </div>
+          <div className="solution-video-wrapper">
+            <video
+              src={normalVideo}
+              autoPlay
+              loop
+              muted
+              playsInline
+              disablePictureInPicture
+              disableRemotePlayback
+              className="solution-video-player"
+            />
           </div>
 
           {/* RIGHT: 4 Cards in Solution Content Column */}

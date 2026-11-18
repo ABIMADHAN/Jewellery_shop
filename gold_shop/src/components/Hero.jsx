@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FileTextIcon, CheckIcon, ArrowUpRightIcon, Building2Icon } from './Icons'
+import { FileTextIcon, CheckIcon, ArrowUpRightIcon, Building2Icon, SparklesIcon } from './Icons'
 
 export default function Hero({ onGetStarted, onExploreFeatures }) {
   const [activeInstalment, setActiveInstalment] = useState(8)
@@ -148,20 +148,25 @@ export default function Hero({ onGetStarted, onExploreFeatures }) {
           {/* Three Compact Highlights */}
           <div className="badges-row">
             {/* Highlight 1: Audit Trail */}
-            <div className="badge-item glass-pill">
-              <FileTextIcon size={16} className="badge-icon-gold" />
+            <div className="badge-item glass-pill badge-float-1">
+              <span className="badge-icon-wrap">
+                <FileTextIcon size={16} className="badge-icon-gold" />
+              </span>
               <span className="badge-text">Audit Trail</span>
             </div>
 
             {/* Highlight 2: Liability Tracking (₹1.48 Cr) */}
-            <div className="badge-item badge-liability-highlight">
+            <div className="badge-item badge-liability-highlight badge-float-center">
+              <span className="liability-pulse-dot" aria-hidden="true" />
               <span className="liability-label">Liability Tracking:</span>
               <span className="liability-value">₹1.48 Cr</span>
             </div>
 
             {/* Highlight 3: Multi-Branch Control */}
-            <div className="badge-item glass-pill">
-              <Building2Icon size={15} className="badge-icon-gold" />
+            <div className="badge-item glass-pill badge-float-2">
+              <span className="badge-icon-wrap">
+                <Building2Icon size={15} className="badge-icon-gold" />
+              </span>
               <span className="badge-text">Multi-Branch Control</span>
             </div>
           </div>
@@ -171,21 +176,23 @@ export default function Hero({ onGetStarted, onExploreFeatures }) {
             {/* Button 1: Get Started Now */}
             <button
               type="button"
-              className="btn-primary-gold"
+              className="btn-primary-gold btn-hero-cta btn-float-primary"
               onClick={onGetStarted}
             >
-              <span>GET STARTED NOW</span>
-              <ArrowUpRightIcon size={16} />
-              <div className="btn-shimmer" />
+              <span className="btn-glow-aura" aria-hidden="true" />
+              <span className="btn-text">GET STARTED NOW</span>
+              <ArrowUpRightIcon size={16} className="btn-arrow-icon" />
+              <div className="btn-shimmer" aria-hidden="true" />
             </button>
 
             {/* Button 2: Explore Features */}
             <button
               type="button"
-              className="btn-secondary-glass"
+              className="btn-secondary-glass btn-hero-cta btn-float-secondary"
               onClick={onExploreFeatures}
             >
-              <span>EXPLORE FEATURES</span>
+              <SparklesIcon size={15} className="btn-secondary-icon" />
+              <span className="btn-text">EXPLORE FEATURES</span>
             </button>
           </div>
         </div>
